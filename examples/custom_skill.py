@@ -25,8 +25,8 @@ class CalculatorSkill(Skill):
     
     def execute(self, command: str, params: Dict) -> str:
         try:
-            # Extract numbers from command
-            numbers = re.findall(r'\d+\.?\d*', command)
+            # Extract numbers from command (matches integers and decimals like 5, 5.0, 5.25)
+            numbers = re.findall(r'\d+(?:\.\d+)?', command)
             
             if len(numbers) < 2:
                 return "Please provide at least two numbers for calculation."
@@ -55,8 +55,10 @@ class CalculatorSkill(Skill):
             
             return f"{num1} {operation} {num2} equals {result}"
             
-        except Exception as e:
-            return f"Sorry, I couldn't perform that calculation. Please try again."
+        except ValueError:
+            return "Sorry, I couldn't extract valid numbers from your request."
+        except Exception:
+            return "Sorry, I couldn't perform that calculation. Please try again."
 
 
 def main():
