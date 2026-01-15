@@ -4,7 +4,10 @@ Example: Using Leon with a single command
 """
 
 import sys
-sys.path.insert(0, '..')
+import os
+
+# Add parent directory to path for imports
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from leon import Leon
 

@@ -4,11 +4,14 @@ Example: Extending Leon with a custom skill
 """
 
 import sys
-sys.path.insert(0, '..')
+import os
+import re
+
+# Add parent directory to path for imports
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from leon import Leon, Skill
 from typing import Dict
-import re
 
 class CalculatorSkill(Skill):
     """Handles basic arithmetic calculations"""

@@ -5,9 +5,8 @@ A minimal implementation of a modular personal assistant
 """
 
 import sys
-import json
 from datetime import datetime
-from typing import Dict, List, Optional
+from typing import Dict, List
 
 
 class Skill:
